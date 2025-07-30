@@ -13,7 +13,10 @@ if not DATABASE_URL:
     raise ValueError("DATABASE_URL environment variable is not set")
 
 # The async engine for database operations
-engine = create_async_engine(DATABASE_URL)
+engine = create_async_engine(
+    DATABASE_URL,
+    connect_args={"statement_cache_size": 0}
+)
 
 # The async session maker
 async_session_local = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)

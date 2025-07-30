@@ -12,6 +12,8 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 if not DATABASE_URL:
     raise ValueError("DATABASE_URL environment variable is not set")
 
+print("--- DATABASE.PY: Creating database engine with custom connect_args. ---")
+print("--- If you see this message, the deployment is using the new code. ---")
 # The async engine for database operations
 engine = create_async_engine(
     DATABASE_URL,
